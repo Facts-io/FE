@@ -1,5 +1,5 @@
 {
-  "name": "facts.io-fe",
+  "name": "facts",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
