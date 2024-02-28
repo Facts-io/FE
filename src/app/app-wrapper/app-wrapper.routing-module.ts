@@ -4,13 +4,19 @@ import { NgModule } from '@angular/core';
 import { OptionsComponent } from './options/options.component';
 
 export enum AppRoutesPath {
-  HOME = 'app',
+  DEFAULT = 'app',
+  HOME = 'home',
   OPTIONS = 'options',
 }
 
 export const appRoutes: Route[] = [
   {
     path: '',
+    redirectTo: AppRoutesPath.HOME,
+    pathMatch: 'full',
+  },
+  {
+    path: AppRoutesPath.HOME,
     component: HomeComponent,
   },
   {
@@ -18,6 +24,14 @@ export const appRoutes: Route[] = [
     component: OptionsComponent,
   },
 ];
+
+export function searchPage(param: AppRoutesPath) {
+  return AppRoutesPath.DEFAULT + '/' + param;
+}
+
+export function getRouteByUrl(url: string): AppRoutesPath {
+  return url.split('/')[1] as AppRoutesPath;
+}
 
 @NgModule({
   providers: [provideRouter(appRoutes)],

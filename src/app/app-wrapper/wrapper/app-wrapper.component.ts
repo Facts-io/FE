@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { AppWrapperModule } from '../app-wrapper.module';
 import { BehaviorSubject } from 'rxjs';
+import {
+  AppRoutesPath,
+  getRouteByUrl,
+  searchPage,
+} from '../app-wrapper.routing-module';
 
 @Component({
   selector: 'facts-app-wrapper',
@@ -11,17 +16,18 @@ import { BehaviorSubject } from 'rxjs';
   imports: [RouterOutlet, AppWrapperModule],
 })
 export class AppWrapperComponent implements OnInit {
-  selected$ = new BehaviorSubject<'home' | 'options'>('home');
+  selected$ = new BehaviorSubject<AppRoutesPath>(AppRoutesPath.HOME);
 
   constructor(private router: Router) {
-    console.log(router.config);
+    this.selected$.next(
+      getRouteByUrl(this.router.url.slice(1)) || AppRoutesPath.HOME
+    );
   }
 
-  ngOnInit(): void {
-    this.selected$.next('home');
-  }
+  ngOnInit(): void {}
 
-  navigate(param: 'home' | 'options') {
+  navigate(param: any) {
     this.selected$.next(param);
+    this.router.navigate([searchPage(param)]);
   }
 }

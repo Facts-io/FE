@@ -12,7 +12,7 @@ export const routes: Routes = [
     component: LandingPageComponent,
   },
   {
-    path: AppRoutesPath.HOME,
+    path: AppRoutesPath.DEFAULT,
     component: AppWrapperComponent,
     loadChildren: () =>
       import('./app-wrapper/app-wrapper.routing-module').then(

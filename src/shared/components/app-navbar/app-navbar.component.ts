@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MaterialModule } from '../../material.module';
 import { CommonModule } from '@angular/common';
+import { AppRoutesPath } from '../../../app/app-wrapper/app-wrapper.routing-module';
 
 @Component({
   selector: 'facts-app-navbar',
@@ -10,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app-navbar.component.scss',
 })
 export class AppNavbarComponent {
-  @Input() selected: 'home' | 'options' | null = null;
+  @Input() selected: any = AppRoutesPath.HOME;
 
   @Output() home = new EventEmitter();
   @Output() options = new EventEmitter();
