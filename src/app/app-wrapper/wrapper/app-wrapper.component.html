@@ -1,6 +1,14 @@
+<header>
+  <facts-page-title
+    [title]="pageTitle || ''"
+    [subtitle]="pageSubtitle || ''"
+  ></facts-page-title>
+</header>
 <router-outlet></router-outlet>
-<facts-app-navbar
-  [selected]="selected$ | async"
-  (home)="navigate('home')"
-  (options)="navigate('options')"
-></facts-app-navbar>
+<footer>
+  <facts-app-navbar
+    [selected]="selected$ | async"
+    (home)="navigate('home')"
+    (options)="navigate('options')"
+  ></facts-app-navbar>
+</footer>

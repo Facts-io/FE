@@ -7,6 +7,10 @@ import {
   getRouteByUrl,
   searchPage,
 } from '../app-wrapper.routing-module';
+import {
+  defaultPageSubtitle,
+  defaultPageTitle,
+} from '../../../shared/costants';
 
 @Component({
   selector: 'facts-app-wrapper',
@@ -15,7 +19,10 @@ import {
   styleUrl: './app-wrapper.component.scss',
   imports: [RouterOutlet, AppWrapperModule],
 })
-export class AppWrapperComponent implements OnInit {
+export class AppWrapperComponent {
+  pageTitle: string = defaultPageTitle;
+  pageSubtitle: string = defaultPageSubtitle;
+
   selected$ = new BehaviorSubject<AppRoutesPath>(AppRoutesPath.HOME);
 
   constructor(private router: Router) {
@@ -23,8 +30,6 @@ export class AppWrapperComponent implements OnInit {
       getRouteByUrl(this.router.url.slice(1)) || AppRoutesPath.HOME
     );
   }
-
-  ngOnInit(): void {}
 
   navigate(param: any) {
     this.selected$.next(param);
