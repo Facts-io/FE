@@ -1,5 +1,12 @@
-<mat-toolbar class="flex flex-nowrap justify-center items-center gap-96">
-  <button>1</button>
-  <button>1</button>
-  <button>1</button>
+<mat-toolbar class="flex flex-nowrap justify-evenly">
+  <button (click)="home.emit()">
+    <mat-icon [ngClass]="selected === 'home' ? 'selected' : ''">
+      home
+    </mat-icon>
+  </button>
+  <button (click)="options.emit()">
+    <mat-icon [ngClass]="selected === 'options' ? 'selected' : ''">
+      account_circle
+    </mat-icon>
+  </button>
 </mat-toolbar>

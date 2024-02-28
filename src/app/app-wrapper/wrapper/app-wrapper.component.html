@@ -1,2 +1,6 @@
 <router-outlet></router-outlet>
-<facts-app-navbar></facts-app-navbar>
+<facts-app-navbar
+  [selected]="selected$ | async"
+  (home)="navigate('home')"
+  (options)="navigate('options')"
+></facts-app-navbar>

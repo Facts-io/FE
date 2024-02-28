@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { AppWrapperModule } from '../app-wrapper.module';
-import { AppNavbarComponent } from '../../../shared/components/app-navbar/app-navbar.component';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'facts-app-wrapper',
@@ -10,4 +10,18 @@ import { AppNavbarComponent } from '../../../shared/components/app-navbar/app-na
   styleUrl: './app-wrapper.component.scss',
   imports: [RouterOutlet, AppWrapperModule],
 })
-export class AppWrapperComponent {}
+export class AppWrapperComponent implements OnInit {
+  selected$ = new BehaviorSubject<'home' | 'options'>('home');
+
+  constructor(private router: Router) {
+    console.log(router.config);
+  }
+
+  ngOnInit(): void {
+    this.selected$.next('home');
+  }
+
+  navigate(param: 'home' | 'options') {
+    this.selected$.next(param);
+  }
+}
