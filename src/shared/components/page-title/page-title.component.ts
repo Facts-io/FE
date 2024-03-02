@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
@@ -15,4 +21,7 @@ import { MatCardModule } from '@angular/material/card';
 export class PageTitleComponent {
   @Input() title: string = '';
   @Input() subtitle: string = '';
+  @Input() showLogo: boolean = true;
+
+  @Output() logoClicked = new EventEmitter();
 }

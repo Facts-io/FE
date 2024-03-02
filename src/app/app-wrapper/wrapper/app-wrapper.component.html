@@ -2,6 +2,7 @@
   <facts-page-title
     [title]="pageTitle || ''"
     [subtitle]="pageSubtitle || ''"
+    (logoClicked)="navigate('home')"
   ></facts-page-title>
 </header>
 <router-outlet></router-outlet>

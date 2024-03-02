@@ -1,8 +1,17 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title aria-label="Title of the page">{{ title }}</mat-card-title>
-    <mat-card-subtitle aria-label="Subtitle of the page">{{
-      subtitle
-    }}</mat-card-subtitle>
-  </mat-card-header>
+<mat-card style="display: grid; grid-template-columns: auto auto">
+  <img
+    src="../../../assets/img/logo.svg"
+    class="w-12 h-12 m-2 ml-16 cursor-pointer"
+    alt="Logo"
+    *ngIf="!!showLogo"
+    (click)="logoClicked.emit()"
+  />
+  <div style="justify-self: flex-end" class="m-2 mr-28">
+    <p class="text-lg" aria-label="Title of the page">
+      {{ title }}
+    </p>
+    <h6 class="text-sm" aria-label="Subtitle of the page">
+      {{ subtitle }}
+    </h6>
+  </div>
 </mat-card>
